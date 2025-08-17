@@ -33,7 +33,7 @@ def root():
 
 @app.post("/ingest")
 def ingest(req: IngestRequest):
-    # 1) Load + split docs
+    # 1) Loading + splitting docs
     splits = load_and_split(
         path=req.path,
         chunk_size=req.chunk_size,
