@@ -64,8 +64,8 @@ All retrieved docs are stuffed into the prompt → passed to LLaMA2 → final an
 
 ## How to run? 
 ### 1. Clone repo
-git clone https://github.com/iamsudeshna/<repo_name>.git
-cd <repo_name>
+-> git clone https://github.com/iamsudeshna/<repo_name>.git
+-> cd <repo_name>
 
 ### 2. Create environment & install deps
 python -m venv env
