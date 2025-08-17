@@ -13,7 +13,7 @@ This folder design is inspired by production-level ML/AI systems:
 ✅ Reusability → Each module is a clean building block for future projects.
 This means anyone can start small, but the same structure works if scaled into production.
 
-# The below mentioned is the project folder structure used:
+## The below mentioned is the project folder structure used:
 
 RAG_MVP/
 │── data/                # Raw documents (knowledge base for RAG)
@@ -31,7 +31,7 @@ RAG_MVP/
 │── main.py              # FastAPI server exposing endpoints
 │── requirements.txt     # Python dependencies
 
-# Tech Stack :
+## Tech Stack :
 
 LangChain → Orchestration framework
 LLaMA2 → Open-source LLM used for generation
@@ -63,63 +63,22 @@ In this project, we used RetrievalQA with chain_type="stuff" →
 All retrieved docs are stuffed into the prompt → passed to LLaMA2 → final answer.
 
 ## How to run? 
-# 1. Clone repo
+### 1. Clone repo
 git clone https://github.com/iamsudeshna/<repo_name>.git
 cd <repo_name>
 
-# 2. Create environment & install deps
+### 2. Create environment & install deps
 python -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 
-# 3. Run FastAPI server
+### 3. Run FastAPI server
 uvicorn main:app --reload --host 0.0.0.0 --port 8001 --reload 
 
-# 4. Query via client
+### 4. Query via client
 - Change the question according to what is needed "<question>?"
 python client.py
 
-# Workflow
-                ┌───────────────┐
-                │   doc_loader  │
-                │ (load & split │
-                │   documents)  │
-                └───────┬───────┘
-                        │
-                        ▼
-                ┌───────────────┐
-                │   embedder    │
-                │ (Ollama       │
-                │  embeddings)  │
-                └───────┬───────┘
-                        │
-                        ▼
-                ┌───────────────┐
-                │   vectordb    │
-                │   (FAISS)     │
-                │ store vectors │
-                └───────┬───────┘
-                        │
-            ┌───────────┴───────────┐
-            │                       │
-            ▼                       │
-   ┌────────────────┐               │
-   │   retriever    │  (similarity  │
-   │ fetch relevant │<──────────────┘
-   │   chunks       │
-   └───────┬────────┘
-           │
-           ▼
-   ┌────────────────┐
-   │     LLM        │
-   │   (LLaMA2)     │
-   │ generate final │
-   │     answer     │
-   └───────┬────────┘
-           │
-           ▼
-   ┌────────────────┐
-   │   FastAPI API  │
-   │ serve results  │
-   │   to client    │
-   └────────────────┘
+## Workflow
+                
+         doc_loader → embedder → vectordb → retriever → llm → FastAPI
