@@ -1,4 +1,4 @@
-# This Readme file helps to :
+## This Readme file helps to :
 a. Draw the project file structure.
 b. Explain why the structure is production-level.
 c. Mention Ollama embeddings, FAISS, LLaMA2, LangChain, FastAPI.
@@ -16,20 +16,20 @@ This means anyone can start small, but the same structure works if scaled into p
 ## The below mentioned is the project folder structure used:
 
 RAG_MVP/
-│── data/                # Raw documents (knowledge base for RAG)
-│── db/                  # Database-related files
-│── env/                 # Environment configs (e.g., virtual environment)
-│── modules/             # Core logic (modularized for reusability & clarity)
-│   │── doc_loader.py        # Loads and splits documents into chunks
-│   │── embedder.py          # Generates embeddings (Ollama embeddings)
-│   │── llm_wrapper.py       # Wraps the LLaMA2 LLM for inference
-│   │── rag_chain.py         # Defines the RAG pipeline (Retriever + LLM)
-│   │── vectordb.py          # Handles FAISS vector store (insert, search)
-│── vectorstore/         # Persistent FAISS index storage
-│── .env                 # Environment variables (API keys, configs)
-│── client.py            # Simple client to query the RAG system
-│── main.py              # FastAPI server exposing endpoints
-│── requirements.txt     # Python dependencies
+│── data/                     # Raw documents (knowledge base for RAG)
+│── db/                       # Database-related files
+│── env/                      # Environment configs (e.g., virtual environment)
+│── modules/                  # Core logic (modularized for reusability & clarity)
+│   │── doc_loader.py         # Loads and splits documents into chunks
+│   │── embedder.py           # Generates embeddings (Ollama embeddings)
+│   │── llm_wrapper.py        # Wraps the LLaMA2 LLM for inference
+│   │── rag_chain.py          # Defines the RAG pipeline (Retriever + LLM)
+│   │── vectordb.py           # Handles FAISS vector store (insert, search)
+│── vectorstore/              # Persistent FAISS index storage
+│── .env                      # Environment variables (API keys, configs)
+│── client.py                 # Simple client to query the RAG system
+│── main.py                   # FastAPI server exposing endpoints
+│── requirements.txt          # Python dependencies
 
 ## Tech Stack :
 
@@ -64,20 +64,20 @@ All retrieved docs are stuffed into the prompt → passed to LLaMA2 → final an
 
 ## How to run? 
 ### 1. Clone repo
--> git clone https://github.com/iamsudeshna/<repo_name>.git
--> cd <repo_name>
+a.  git clone https://github.com/iamsudeshna/<repo_name>.git
+b.  cd <repo_name>
 
 ### 2. Create environment & install deps
-python -m venv env
-source env/bin/activate
-pip install -r requirements.txt
+a. python -m venv env
+b. source env/bin/activate  (in MacOS)
+c. pip install -r requirements.txt
 
 ### 3. Run FastAPI server
 uvicorn main:app --reload --host 0.0.0.0 --port 8001 --reload 
 
 ### 4. Query via client
-- Change the question according to what is needed "<question>?"
-python client.py
+a. Change the question according to what is needed "<question>?"
+b. python client.py
 
 ## Workflow
                 
