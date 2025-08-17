@@ -17,7 +17,7 @@ class IngestRequest(BaseModel):
     path: str
     chunk_size: int = 400
     chunk_overlap: int = 50
-    embed_model: str = "nomic-embed-text"  # Ollama embeddings model
+    embed_model: str = "nomic-embed-text"  # Ollama embeddings model run locally
 
 class AskRequest(BaseModel):
     question: str
@@ -42,7 +42,7 @@ def ingest(req: IngestRequest):
     if not splits:
         raise HTTPException(status_code=400, detail="No text found after splitting.")
 
-    # 2) Build & save FAISS vectorstore
+    # 2) Building & saving FAISS vectorstore
     save_vectorstore(documents=splits, model_name=req.embed_model)
 
     return {
@@ -69,7 +69,7 @@ def ask(req: AskRequest):
     # 3) RAG chain
     chain = make_rag_chain(retriever=retriever, llm=llm)
 
-    # 4) Ask question
+    # 4) Asking question
     result = chain.invoke({"query": req.question})
 
     answer = result.get("result")
