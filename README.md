@@ -1,4 +1,4 @@
-## This Readme file helps to :
+## This Readme file helps to understand:
 a. Draw the project file structure.
 b. Explain why the structure is production-level.
 c. Mention Ollama embeddings, FAISS, LLaMA2, LangChain, FastAPI.
